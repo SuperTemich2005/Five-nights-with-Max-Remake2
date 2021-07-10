@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/JumpscareFBI.ogg-eb3c18581c20d99be7acd60bddbf8353.oggstr"
+
+[deps]
+
+source_file="res://sounds/JumpscareFBI.ogg"
+dest_files=[ "res://.import/JumpscareFBI.ogg-eb3c18581c20d99be7acd60bddbf8353.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

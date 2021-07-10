@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Вступление_~_Пять_ночей_с_Максом_Remake_(2021).ogg-bac59189b5d4f6625bcb264851d8cfe8.oggstr"
+
+[deps]
+
+source_file="res://sounds/Вступление_~_Пять_ночей_с_Максом_Remake_(2021).ogg"
+dest_files=[ "res://.import/Вступление_~_Пять_ночей_с_Максом_Remake_(2021).ogg-bac59189b5d4f6625bcb264851d8cfe8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

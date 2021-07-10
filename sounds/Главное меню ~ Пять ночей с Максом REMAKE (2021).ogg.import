@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Главное меню ~ Пять ночей с Максом REMAKE (2021).ogg-373b03cbad366f92f569d523e2b3e71b.oggstr"
+
+[deps]
+
+source_file="res://sounds/Главное меню ~ Пять ночей с Максом REMAKE (2021).ogg"
+dest_files=[ "res://.import/Главное меню ~ Пять ночей с Максом REMAKE (2021).ogg-373b03cbad366f92f569d523e2b3e71b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
