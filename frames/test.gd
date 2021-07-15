@@ -12,6 +12,9 @@ func _ready():
 	save_file = File.new()
 	if not save_file.file_exists("C:/Games/fnwmr.save"):
 		$"Load Game".hide()
+	else:
+		save_file.open("C:/Games/fnwmr.save", File.READ)
+		$"Load Game".text = "Ночь "+save_file.get_as_text().split(" ")[-1]
 	
 
 

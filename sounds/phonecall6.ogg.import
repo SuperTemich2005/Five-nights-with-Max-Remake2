@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/phonecall6.ogg-fd82e6f53a805418ffdccd5b6e95c6f6.oggstr"
+
+[deps]
+
+source_file="res://sounds/phonecall6.ogg"
+dest_files=[ "res://.import/phonecall6.ogg-fd82e6f53a805418ffdccd5b6e95c6f6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

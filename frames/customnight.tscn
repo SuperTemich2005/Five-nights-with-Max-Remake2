@@ -13,19 +13,19 @@
 size = 72
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 78
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 144
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 162
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 128
 font_data = ExtResource( 3 )
 
@@ -61,7 +61,7 @@ margin_left = 614.0
 margin_top = 498.0
 margin_right = 979.0
 margin_bottom = 568.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Начать"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -72,7 +72,7 @@ margin_left = 42.6365
 margin_top = 498.0
 margin_right = 407.636
 margin_bottom = 583.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Назад"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -91,7 +91,7 @@ margin_left = -181.222
 margin_top = -428.472
 margin_right = 134.778
 margin_bottom = -283.472
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Макс"
 align = 1
 __meta__ = {
@@ -103,7 +103,7 @@ margin_left = -196.202
 margin_top = 380.836
 margin_right = 119.798
 margin_bottom = 525.836
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -115,7 +115,7 @@ margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -126,7 +126,7 @@ margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -150,7 +150,7 @@ margin_top = -428.472
 margin_right = 167.87
 margin_bottom = -283.472
 rect_pivot_offset = Vector2( 3578.65, 2473.82 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Милка"
 align = 1
 __meta__ = {
@@ -162,7 +162,7 @@ margin_left = -190.109
 margin_top = 380.836
 margin_right = 125.891
 margin_bottom = 525.836
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -174,7 +174,7 @@ margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -185,7 +185,7 @@ margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -208,7 +208,7 @@ margin_left = -419.947
 margin_top = -428.472
 margin_right = 449.053
 margin_bottom = -283.472
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Т. Ивановна"
 align = 1
 __meta__ = {
@@ -220,7 +220,7 @@ margin_left = -189.716
 margin_top = 380.836
 margin_right = 126.284
 margin_bottom = 525.836
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -232,7 +232,7 @@ margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -243,7 +243,7 @@ margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -266,7 +266,7 @@ margin_left = -419.947
 margin_top = -428.472
 margin_right = 449.053
 margin_bottom = -283.472
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "СБУ"
 align = 1
 __meta__ = {
@@ -278,7 +278,7 @@ margin_left = -189.716
 margin_top = 380.836
 margin_right = 126.284
 margin_bottom = 525.836
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -290,7 +290,7 @@ margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -301,7 +301,7 @@ margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -325,7 +325,7 @@ margin_left = -419.947
 margin_top = -428.472
 margin_right = 449.053
 margin_bottom = -283.472
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Гопарь"
 align = 1
 __meta__ = {
@@ -337,7 +337,7 @@ margin_left = -189.716
 margin_top = 380.836
 margin_right = 126.284
 margin_bottom = 525.836
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 __meta__ = {
@@ -349,7 +349,7 @@ margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -360,7 +360,7 @@ margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
 margin_bottom = 522.526
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false

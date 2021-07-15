@@ -146,9 +146,14 @@ animations = [ {
 "name": "cam_06",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "cam_05",
+"name": "cam_03",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "cam_02",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -156,19 +161,14 @@ animations = [ {
 "name": "cam_04",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "cam_03",
+"name": "cam_05",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "cam_01",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "cam_02",
 "speed": 5.0
 } ]
 
@@ -192,7 +192,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=20]
+[sub_resource type="SpriteFrames" id=17]
 animations = [ {
 "frames": [ ExtResource( 58 ) ],
 "loop": true,
@@ -200,13 +200,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=17]
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ) ],
-"loop": true,
-"name": "Milka",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 52 ), ExtResource( 53 ) ],
 "loop": true,
 "name": "Titan",
@@ -222,13 +217,18 @@ animations = [ {
 "name": "Masya",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ) ],
+"loop": true,
+"name": "Milka",
+"speed": 15.0
+}, {
 "frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "Max",
 "speed": 15.0
 } ]
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="SpriteFrames" id=19]
 animations = [ {
 "frames": [ ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,
@@ -236,7 +236,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=20]
 size = 62
 font_data = ExtResource( 3 )
 
@@ -553,18 +553,18 @@ frames = SubResource( 16 )
 visible = false
 position = Vector2( -211.757, 249.184 )
 scale = Vector2( 2.80925, 2.80925 )
-frames = SubResource( 20 )
+frames = SubResource( 17 )
 
 [node name="JumpScare" type="AnimatedSprite" parent="CamParent"]
 visible = false
 position = Vector2( 535.812, 236.668 )
 scale = Vector2( 1.74056, 1.74056 )
-frames = SubResource( 17 )
+frames = SubResource( 18 )
 animation = "Masya"
 
 [node name="GenAlert" type="AnimatedSprite" parent="CamParent"]
 position = Vector2( 54.8309, 488.759 )
-frames = SubResource( 18 )
+frames = SubResource( 19 )
 
 [node name="HourClk" type="Timer" parent="."]
 wait_time = 60.0
@@ -591,7 +591,6 @@ wait_time = 30.0
 wait_time = 30.0
 
 [node name="ResetAudio" type="Timer" parent="."]
-wait_time = 6.0
 one_shot = true
 
 [node name="MovGameOver" type="Timer" parent="."]
@@ -660,7 +659,7 @@ __meta__ = {
 margin_left = 96.0
 margin_right = 436.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 text = "Оглянуться"
 [connection signal="toggled" from="DoorButton" to="." method="_on_DoorButton_toggled"]
 [connection signal="pressed" from="CamParent/CamItself/MapBg/Cam1" to="." method="_on_Cam1_pressed"]

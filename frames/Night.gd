@@ -34,7 +34,6 @@ var gopAI
 var sbuAI
 var olgaAI
 var AudioWhere
-var AudioOn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -70,7 +69,7 @@ func _ready():
 		titanAI = 0
 		lentolnAI = 0
 		swetlanAI = 0
-		gopAI = 0
+		gopAI = 20
 		sbuAI = 0
 		olgaAI = 0
 	else:
@@ -105,10 +104,6 @@ func _ready():
 	$Ambient.play()
 	$CamParent/WindowBG.hide()
 	$DoorItself.hide()
-	if gopAI <= 0:
-		$CamParent/CamItself/CamVP/Masya.hide()
-	else:
-		$CamParent/CamItself/CamVP/Masya.show()
 	if night != null and night < 7:
 		$PhoneCall1.set_stream(load("res://sounds/phonecall"+str(night)+".ogg"))
 	else:
@@ -166,13 +161,13 @@ func _process(_delta):
 				$CamParent/CamItself/CamVP/Milka.show()
 			else:
 				$CamParent/CamItself/CamVP/Milka.hide()
-			if gopPos == 5:
+			if gopPos == 5 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
 			else:
 				$CamParent/CamItself/CamVP/Masya.hide()
 		2:
 			$CamParent/CamItself/MapBg/Generator.hide()
-			if gopPos == 4:
+			if gopPos == 4 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
 			else:
 				$CamParent/CamItself/CamVP/Masya.hide()
@@ -187,7 +182,7 @@ func _process(_delta):
 				$CamParent/CamItself/CamVP/Milka.hide()
 		3:
 			$CamParent/CamItself/MapBg/Generator.hide()
-			if gopPos == 3:
+			if gopPos == 3 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
 			else:
 				$CamParent/CamItself/CamVP/Masya.hide()
@@ -202,7 +197,7 @@ func _process(_delta):
 				$CamParent/CamItself/CamVP/Milka.hide()
 		4:
 			$CamParent/CamItself/MapBg/Generator.show()
-			if gopPos == 2:
+			if gopPos == 2 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
 			else:
 				$CamParent/CamItself/CamVP/Masya.hide()
@@ -212,7 +207,7 @@ func _process(_delta):
 			else:
 				$CamParent/CamItself/CamVP/Max.hide()
 		5:
-			if gopPos == 1:
+			if gopPos == 1 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
 			else:
 				$CamParent/CamItself/CamVP/Masya.hide()
@@ -229,7 +224,7 @@ func _process(_delta):
 		6:
 			$CamParent/CamItself/MapBg/Generator.hide()
 			$CamParent/CamItself/CamVP/Max.hide()
-			if gopPos == 0:
+			if gopPos == 0 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
 			else:
 				$CamParent/CamItself/CamVP/Masya.hide()
@@ -336,10 +331,6 @@ func _on_CrouchButton_pressed():
 
 
 func _on_MoveClk_timeout():
-	if gopAI <= 0:
-		$CamParent/CamItself/CamVP/Masya.hide()
-	else:
-		$CamParent/CamItself/CamVP/Masya.show()
 	$MoveClk.start()
 	$CamParent/Hint.hide()
 	var chance = randi() % (20-1) + 1
@@ -392,17 +383,7 @@ func _on_MoveClk_timeout():
 			$CamParent/JumpScare.set_animation("SBU")
 	if chance < gopAI:
 		print("moving masya")
-		if AudioOn:
-			if abs(6-gopPos-AudioWhere) < 2:
-				gopPos = 6-AudioWhere
-				print("Masya moved to the camera where audio was played."+str(gopPos))
-				$DIEBITCH5.stop()
-				_on_DIEBITCH5_timeout()
-			else:
-				print("Sound played too far away "+str(abs(6-gopPos-AudioWhere))+" "+str(6-gopPos)+" "+str(AudioWhere))
-				gopPos = clamp(gopPos+1,0,5)
-		else:
-			gopPos = clamp(gopPos+1,0,5)
+		gopPos = clamp(gopPos+1,0,5)
 		if gopPos == 5:
 			print("Masya attacks")
 			$DIEBITCH5.start()
@@ -559,11 +540,14 @@ func _on_Audio_pressed():
 	$ResetAudio.start()
 	print("Playing audio on"+str(curCam))
 	AudioWhere = curCam
-	AudioOn = 1
 
 
 func _on_ResetAudio_timeout():
-	AudioOn = 0
+	if abs(6-gopPos-AudioWhere) < 2:
+		gopPos = 6-AudioWhere
+		print("Masya moved to the camera where audio was played."+str(gopPos))
+		$DIEBITCH5.stop()
+		_on_DIEBITCH5_timeout()
 	print("Disabling audio")
 
 

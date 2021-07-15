@@ -31,7 +31,8 @@ func _on_Back_pressed():
 
 
 func _on_Start_pressed():
-	get_tree().change_scene("res://frames/Night.tscn")
+	get_tree().change_scene("res://frames/nightCOunt.tscn")
+	$"/root/GlobalParameters".night = 7
 
 
 func _on_HarderMax_pressed():
