@@ -93,3 +93,15 @@ func _on_EasierMasya_pressed():
 	if params.gopAI > 0:
 		params.gopAI -= 1
 		$BG/Masya2/Masya/Node2D/Difficulty.text = str(params.gopAI)
+
+
+func _on_HarderLen_pressed():
+	if params.lentolnAI < 20:
+		params.lentolnAI += 1
+		$BG/Lentoln2/Lentoln/Node2D/Difficulty.text = str(params.lentolnAI)
+
+
+func _on_EasierLen_pressed():
+	if params.lentolnAI > 0:
+		params.lentolnAI -= 1
+		$BG/Lentoln2/Lentoln/Node2D/Difficulty.text = str(params.lentolnAI)

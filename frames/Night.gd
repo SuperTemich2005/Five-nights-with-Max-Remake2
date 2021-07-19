@@ -67,9 +67,9 @@ func _ready():
 		maxAI = 0
 		milkAI = 0
 		titanAI = 0
-		lentolnAI = 0
+		lentolnAI = 20
 		swetlanAI = 0
-		gopAI = 20
+		gopAI = 0
 		sbuAI = 0
 		olgaAI = 0
 	else:
@@ -165,6 +165,10 @@ func _process(_delta):
 				$CamParent/CamItself/CamVP/Masya.show()
 			else:
 				$CamParent/CamItself/CamVP/Masya.hide()
+			if lentolnPos == 3 and lentolnAI >= 0:
+				$CamParent/CamItself/CamVP/Lentoln.show()
+			else:
+				$CamParent/CamItself/CamVP/Lentoln.hide()
 		2:
 			$CamParent/CamItself/MapBg/Generator.hide()
 			if gopPos == 4 and gopAI >= 0:
@@ -175,12 +179,19 @@ func _process(_delta):
 				$CamParent/CamItself/CamVP/Max.show()
 			else:
 				$CamParent/CamItself/CamVP/Max.hide()
-				
+			if lentolnPos == 2 and lentolnAI >= 0:
+				$CamParent/CamItself/CamVP/Lentoln.show()
+			else:
+				$CamParent/CamItself/CamVP/Lentoln.hide()
 			if milkPos == 4:
 				$CamParent/CamItself/CamVP/Milka.show()
 			else:
 				$CamParent/CamItself/CamVP/Milka.hide()
 		3:
+			if lentolnPos == 1 and lentolnAI >= 0:
+				$CamParent/CamItself/CamVP/Lentoln.show()
+			else:
+				$CamParent/CamItself/CamVP/Lentoln.hide()
 			$CamParent/CamItself/MapBg/Generator.hide()
 			if gopPos == 3 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
@@ -196,6 +207,10 @@ func _process(_delta):
 			else:
 				$CamParent/CamItself/CamVP/Milka.hide()
 		4:
+			if lentolnPos == 0 and lentolnAI >= 0:
+				$CamParent/CamItself/CamVP/Lentoln.show()
+			else:
+				$CamParent/CamItself/CamVP/Lentoln.hide()
 			$CamParent/CamItself/MapBg/Generator.show()
 			if gopPos == 2 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
@@ -207,6 +222,7 @@ func _process(_delta):
 			else:
 				$CamParent/CamItself/CamVP/Max.hide()
 		5:
+			$CamParent/CamItself/CamVP/Lentoln.hide()
 			if gopPos == 1 and gopAI >= 0:
 				$CamParent/CamItself/CamVP/Masya.show()
 			else:
@@ -222,6 +238,7 @@ func _process(_delta):
 			else:
 				$CamParent/CamItself/CamVP/Milka.hide()
 		6:
+			$CamParent/CamItself/CamVP/Lentoln.hide()
 			$CamParent/CamItself/MapBg/Generator.hide()
 			$CamParent/CamItself/CamVP/Max.hide()
 			if gopPos == 0 and gopAI >= 0:
@@ -364,6 +381,18 @@ func _on_MoveClk_timeout():
 	if chance < lentolnAI:
 		print("moving lentolna")
 		lentolnPos += 1
+		if lentolnPos == 4: # in office
+			$BG/LentolnInOffice.show() # Showing max in office
+			$CamParent/JumpScare.set_animation("Lentoln") # setting jumpscare beforehand
+			$Ambient.stop() # stopping bgm1
+			$AmbientDanger.stop() # stopping bgm2
+			$InOffice.play() # starting bgm3
+			if camOn == 1: # shutting cam down
+				camOn = 0
+				$CamParent/CamItself.hide()
+				$CamParent/MaskButton.show()
+				$CrouchButton.show()
+			$DIEBITCH6.start()
 	if chance < titanAI:
 		print("moving titanawanna")
 		titanPos += 1
@@ -551,4 +580,21 @@ func _on_ResetAudio_timeout():
 	print("Disabling audio")
 
 
-
+func _on_DIEBITCH6_timeout():
+	print("DIEBITCH6")
+	$DIEBITCH6.stop()
+	if maskOn == 0:
+		print("JUMPSCARE")
+		$CamParent/JumpScare.playing = true
+		$CamParent/JumpScare.show()
+		$CamParent/JumpScare.position = Vector2(514,298)
+		$CamParent/JumpScare.scale = Vector2(9.5,9.5)
+		$JumpscareSound.play()
+		$MovGameOver.start()
+	elif maskOn == 1:
+		print("Spare")
+		lentolnPos = 0
+		$BG/LentolnInOffice.hide()
+		$Ambient.play()
+		$InOffice.stop()
+		$AmbientDanger.stop()
