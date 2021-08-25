@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/playaudio_easter.ogg-e7fcc44831a984fdc076d161221caab2.oggstr"
+
+[deps]
+
+source_file="res://sounds/playaudio_easter.ogg"
+dest_files=[ "res://.import/playaudio_easter.ogg-e7fcc44831a984fdc076d161221caab2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

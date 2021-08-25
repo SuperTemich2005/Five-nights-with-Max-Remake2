@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Ventwalk1.ogg-6c18fedd9bdbfb13e9157deebae64060.oggst
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

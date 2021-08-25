@@ -34,14 +34,18 @@ var gopAI
 var sbuAI
 var olgaAI
 var AudioWhere
+var SwetlanIntCount
+var rngesus = RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var params = get_node("/root/GlobalParameters")
 	# Time
 	time = 0
 	night = params.night
+	
 	$CamParent/Night.text = str(night)+" ночь"
+	if night == 8:
+		$Ambient.set_stream(load("res://sounds/bossfight.ogg"))
 	charge = 20
 	# Cam
 	camSpeed = 15
@@ -59,6 +63,7 @@ func _ready():
 	titanPos = 0
 	lentolnPos = 0
 	swetlanPos = 0
+	SwetlanIntCount = 0
 	gopPos = 0
 	sbuPos = 0
 	olgaPos = 0
@@ -67,7 +72,7 @@ func _ready():
 		maxAI = 0
 		milkAI = 0
 		titanAI = 0
-		lentolnAI = 20
+		lentolnAI = 0
 		swetlanAI = 0
 		gopAI = 0
 		sbuAI = 0
@@ -90,6 +95,12 @@ func _ready():
 		"Входная дверь",
 		"Кухня",
 	]
+	if maxAI == 999:
+		$MoveClk.wait_time = 3
+		$CamParent/CamItself/MapBg/Generator/Discharge.wait_time = 10
+	if maxAI < 0:
+		maxAI = 20
+		milkAI = 20
 	$CamParent/MaskItself.hide() # hiding mask
 	$CamParent/CamItself.hide() # hiding tablet
 	$CamParent/CrouchItself.hide() # hiding floor
@@ -109,7 +120,7 @@ func _ready():
 	else:
 		$PhoneCall1.remove_and_skip()
 		print("No phone call for night "+str(night))
-		
+	#$Aasd.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -119,6 +130,12 @@ func _process(_delta):
 	if titanPos >= 5 and crouchOn == 1:
 		titanPos = 0
 		$DIEBITCH3.stop()
+	if olgaPos == 7 and crouchOn == 1 and olgaAI > 0:
+		$DIEBITCH3.stop()
+		print("Moving Olga to door")
+		olgaPos = 8
+		_on_MoveClk_timeout()
+		$DIEBITCH8.start()
 	if sbuPos >= 7 and crouchOn == 1:
 		sbuPos = 0
 		$DIEBITCH4.stop()
@@ -139,116 +156,52 @@ func _process(_delta):
 	if curCam != 0:
 		$CamParent/CamItself/CamVP.animation = "cam_0"+str(curCam)
 		$CamParent/CamItself/CamVP/Label.text = camNames[curCam]
-	if titanPos >= 5 and turnOn == 1:
-		$CamParent/WindowBG/Titanawanna.show()
-	elif titanPos < 5 and turnOn == 1:
-		$CamParent/WindowBG/Titanawanna.hide()
-	if sbuPos >= 9 and turnOn == 1:
-		$CamParent/WindowBG/SBU.show()
-		
-	elif sbuPos < 9 and turnOn == 1:
-		$CamParent/WindowBG/SBU.hide()
-		
+	$CamParent/WindowBG/Titanawanna.visible = (titanPos >= 5 and turnOn == 1)
+	$CamParent/WindowBG/SBU.visible = (sbuPos >= 9 and turnOn == 1)
+	$CamParent/WindowBG/BossInWindow.visible = (olgaPos == 7 and turnOn == 1)
 	match curCam:
 		1:
 			$CamParent/CamItself/MapBg/Generator.hide()
-			if maxPos == 4:
-				$CamParent/CamItself/CamVP/Max.show()
-			else:
-				$CamParent/CamItself/CamVP/Max.hide()
-				
-			if milkPos == 5:
-				$CamParent/CamItself/CamVP/Milka.show()
-			else:
-				$CamParent/CamItself/CamVP/Milka.hide()
-			if gopPos == 5 and gopAI >= 0:
-				$CamParent/CamItself/CamVP/Masya.show()
-			else:
-				$CamParent/CamItself/CamVP/Masya.hide()
-			if lentolnPos == 3 and lentolnAI >= 0:
-				$CamParent/CamItself/CamVP/Lentoln.show()
-			else:
-				$CamParent/CamItself/CamVP/Lentoln.hide()
+			$CamParent/CamItself/CamVP/Max.visible = (maxPos == 4)
+			$CamParent/CamItself/CamVP/Milka.visible = (milkPos == 5)
+			$CamParent/CamItself/CamVP/Masya.visible = (gopPos == 5 and gopAI > 0)
+			$CamParent/CamItself/CamVP/Lentoln.visible = (lentolnPos == 3 and lentolnAI > 0)
+			$CamParent/CamItself/CamVP/Boss.visible = (olgaPos == 5 and olgaAI > 0)
 		2:
 			$CamParent/CamItself/MapBg/Generator.hide()
-			if gopPos == 4 and gopAI >= 0:
-				$CamParent/CamItself/CamVP/Masya.show()
-			else:
-				$CamParent/CamItself/CamVP/Masya.hide()
-			if maxPos == 3:
-				$CamParent/CamItself/CamVP/Max.show()
-			else:
-				$CamParent/CamItself/CamVP/Max.hide()
-			if lentolnPos == 2 and lentolnAI >= 0:
-				$CamParent/CamItself/CamVP/Lentoln.show()
-			else:
-				$CamParent/CamItself/CamVP/Lentoln.hide()
-			if milkPos == 4:
-				$CamParent/CamItself/CamVP/Milka.show()
-			else:
-				$CamParent/CamItself/CamVP/Milka.hide()
+			$CamParent/CamItself/CamVP/Masya.visible = (gopPos == 4 and gopAI > 0)
+			$CamParent/CamItself/CamVP/Max.visible = (maxPos == 3)
+			$CamParent/CamItself/CamVP/Lentoln.visible = (lentolnPos == 2 and lentolnAI > 0)
+			$CamParent/CamItself/CamVP/Milka.visible = (milkPos == 4)
+			$CamParent/CamItself/CamVP/Boss.visible = (olgaPos == 4 and olgaAI > 0)
 		3:
-			if lentolnPos == 1 and lentolnAI >= 0:
-				$CamParent/CamItself/CamVP/Lentoln.show()
-			else:
-				$CamParent/CamItself/CamVP/Lentoln.hide()
+			$CamParent/CamItself/CamVP/Lentoln.visible = (lentolnPos == 1 and lentolnAI > 0)
 			$CamParent/CamItself/MapBg/Generator.hide()
-			if gopPos == 3 and gopAI >= 0:
-				$CamParent/CamItself/CamVP/Masya.show()
-			else:
-				$CamParent/CamItself/CamVP/Masya.hide()
-			if maxPos == 1:
-				$CamParent/CamItself/CamVP/Max.show()
-			else:
-				$CamParent/CamItself/CamVP/Max.hide()
-			
-			if milkPos == 3:
-				$CamParent/CamItself/CamVP/Milka.show()
-			else:
-				$CamParent/CamItself/CamVP/Milka.hide()
+			$CamParent/CamItself/CamVP/Masya.visible = (gopPos == 3 and gopAI > 0)
+			$CamParent/CamItself/CamVP/Max.visible = (maxPos == 1)
+			$CamParent/CamItself/CamVP/Milka.visible = (milkPos == 4)
+			$CamParent/CamItself/CamVP/Boss.visible = (olgaPos == 3 and olgaAI > 0)
 		4:
-			if lentolnPos == 0 and lentolnAI >= 0:
-				$CamParent/CamItself/CamVP/Lentoln.show()
-			else:
-				$CamParent/CamItself/CamVP/Lentoln.hide()
+			$CamParent/CamItself/CamVP/Lentoln.visible = (lentolnPos == 0 and lentolnAI > 0)
 			$CamParent/CamItself/MapBg/Generator.show()
-			if gopPos == 2 and gopAI >= 0:
-				$CamParent/CamItself/CamVP/Masya.show()
-			else:
-				$CamParent/CamItself/CamVP/Masya.hide()
 			$CamParent/CamItself/CamVP/Milka.hide()
-			if maxPos == 2:
-				$CamParent/CamItself/CamVP/Max.show()
-			else:
-				$CamParent/CamItself/CamVP/Max.hide()
+			$CamParent/CamItself/CamVP/Masya.visible = (gopPos == 2 and gopAI > 0)
+			$CamParent/CamItself/CamVP/Max.visible = (maxPos == 2)
+			$CamParent/CamItself/CamVP/Boss.visible = (olgaPos == 2 and olgaAI > 0)
 		5:
 			$CamParent/CamItself/CamVP/Lentoln.hide()
-			if gopPos == 1 and gopAI >= 0:
-				$CamParent/CamItself/CamVP/Masya.show()
-			else:
-				$CamParent/CamItself/CamVP/Masya.hide()
+			$CamParent/CamItself/CamVP/Masya.visible = (gopPos == 1 and gopAI > 0)
 			$CamParent/CamItself/MapBg/Generator.hide()
-			if maxPos == 0:
-				$CamParent/CamItself/CamVP/Max.show()
-			else:
-				$CamParent/CamItself/CamVP/Max.hide()
-				
-			if milkPos == 1:
-				$CamParent/CamItself/CamVP/Milka.show()
-			else:
-				$CamParent/CamItself/CamVP/Milka.hide()
+			$CamParent/CamItself/CamVP/Max.visible = (maxPos == 0)
+			$CamParent/CamItself/CamVP/Milka.visible = (milkPos == 1)
+			$CamParent/CamItself/CamVP/Boss.visible = (olgaPos == 1 and olgaAI > 0)
 		6:
 			$CamParent/CamItself/CamVP/Lentoln.hide()
 			$CamParent/CamItself/MapBg/Generator.hide()
 			$CamParent/CamItself/CamVP/Max.hide()
-			if gopPos == 0 and gopAI >= 0:
-				$CamParent/CamItself/CamVP/Masya.show()
-			else:
-				$CamParent/CamItself/CamVP/Masya.hide()
-			if milkPos == 0:
-				$CamParent/CamItself/CamVP/Milka.show()
-			else: 
-				$CamParent/CamItself/CamVP/Milka.hide()
+			$CamParent/CamItself/CamVP/Masya.visible = (gopPos == 0 and gopAI > 0)
+			$CamParent/CamItself/CamVP/Milka.visible = (milkPos == 0)
+			$CamParent/CamItself/CamVP/Boss.visible = (olgaPos == 0 and olgaAI > 0)
 
 func _input(event):
 	if Input.is_action_pressed("ui_left"):
@@ -290,29 +243,47 @@ func _on_startNight_timeout():
 	$CamParent/Hint.hide()
 
 
+func checkSwetlan():
+	if swetlanAI > 0:
+		if curCam == swetlanPos:
+			$CamParent/CamItself/CamVP/Swetlanfedrna.show()
+			$DIEBITCH7.start()
+		else: 
+			$CamParent/CamItself/CamVP/Swetlanfedrna.hide()
+			$DIEBITCH7.stop()
+			_on_DIEBITCH7_timeout()
+	else:
+		$CamParent/CamItself/CamVP/Swetlanfedrna.hide()
+
+
 func _on_Cam1_pressed(): # idfk how to shrink this shit(
 	curCam = 1
-	
+	checkSwetlan()
 
 
 func _on_Cam2_pressed(): # 10.07.21 upd: i've realized how to do it but now i am way too lazy to actually do it.
 	curCam = 2
+	checkSwetlan()
 
 
 func _on_Cam3_pressed():
 	curCam = 3
+	checkSwetlan()
 
 
 func _on_Cam4_pressed():
 	curCam = 4
+	checkSwetlan()
 
 
 func _on_Cam5_pressed():
 	curCam = 5
+	checkSwetlan()
 
 
 func _on_Cam6_pressed():
 	curCam = 6
+	checkSwetlan()
 
 
 func _on_HourClk_timeout():
@@ -400,9 +371,9 @@ func _on_MoveClk_timeout():
 			print("TITAN attacks")
 			$DIEBITCH3.start()
 			$CamParent/JumpScare.set_animation("Titan")
-	if chance < swetlanAI:
+	if chance < swetlanAI and SwetlanIntCount % 2 == 0:
 		print("moving swetlanfedrna")
-		swetlanPos += 1
+		swetlanPos = int(rand_range(1,7))
 	if chance < sbuAI:
 		print("moving sbu")
 		sbuPos += 1
@@ -418,8 +389,36 @@ func _on_MoveClk_timeout():
 			$DIEBITCH5.start()
 			$CamParent/JumpScare.set_animation("Masya")
 	if chance < olgaAI:
-		print("moving boss")
-		olgaPos += 1
+		print("moving boss ",olgaPos," ",olgaAI)
+		if olgaPos < 5 or olgaPos > 7:
+			olgaPos += randi()%2+1
+		elif olgaPos == 5:
+			print("Olga in office")
+			$BG/BossInOffice.show() # Showing max in office
+			$CamParent/JumpScare.set_animation("Boss") # setting jumpscare beforehand
+			$Ambient.stop() # stopping bgm1
+			$AmbientDanger.stop() # stopping bgm2
+			$InOffice.play() # starting bgm3
+			if camOn == 1: # shutting cam down
+				camOn = 0
+				$CamParent/CamItself.hide()
+				$CamParent/MaskButton.show()
+				$CrouchButton.show()
+			$DIEBITCH1.start()
+		elif olgaPos == 6:
+			print("Olga ambush attack")
+			$CamParent/JumpScare.set_animation("Boss") # setting jumpscare beforehand
+			$DIEBITCH5.start()
+		elif olgaPos == 7:
+			print("Olga window attack")
+			$DIEBITCH3.start()
+			$CamParent/JumpScare.set_animation("Boss")
+		if olgaPos >= 8:
+			#$DIEBITCH8.start() launched in window attack prevention
+			print("Olga door attack")
+			$BG/BossInOffice2.show()
+			$CamParent/JumpScare.set_animation("Boss") # setting jumpscare beforehand
+	SwetlanIntCount = 1 + SwetlanIntCount
 
 
 func _on_DIEBITCH1_timeout():
@@ -438,6 +437,10 @@ func _on_DIEBITCH1_timeout():
 		$Ambient.play()
 		$InOffice.stop()
 		$AmbientDanger.stop()
+		$BG/BossInOffice.hide()
+		if olgaAI > 0:
+			olgaPos = 6
+			_on_MoveClk_timeout()
 
 
 func _on_DIEBITCH2_timeout():
@@ -453,7 +456,7 @@ func _on_DIEBITCH2_timeout():
 		print("Spare")
 		milkPos = 0
 		$BG/MilkaInOffice.hide()
-
+		#$BG/BossInOffice2.hide()
 
 func _on_DoorButton_toggled(button_pressed):
 #	if button_pressed == true:
@@ -491,16 +494,16 @@ func _on_TurnButton_pressed():
 				$CamParent/WindowBG.show()
 				$CamParent/MaskButton.hide()
 				$CamParent/CamerasButton.hide()
-				if titanPos >= 5:
-					$CamParent/WindowBG/Titanawanna.show()
-				elif titanPos < 5:
-					$CamParent/WindowBG/Titanawanna.hide()
-				if sbuPos >= 7:
-					$CamParent/WindowBG/SBU.show()
-					
-				elif sbuPos < 7:
-					$CamParent/WindowBG/SBU.hide()
-					
+#				if titanPos >= 5:
+#					$CamParent/WindowBG/Titanawanna.show()
+#				elif titanPos < 5:
+#					$CamParent/WindowBG/Titanawanna.hide()
+#				if sbuPos >= 7:
+#					$CamParent/WindowBG/SBU.show()
+#
+#				elif sbuPos < 7:
+#					$CamParent/WindowBG/SBU.hide()
+#
 			1:
 				turnOn = 0
 				$CamParent/WindowBG.hide()
@@ -539,7 +542,8 @@ func _on_DIEBITCH4_timeout():
 				$CamParent/JumpScare.scale = Vector2(4,4)
 			$JumpscareSound2.play()
 			$MovGameOver.start()
-			
+			if gopPos >= 6 and night >= 5:
+				get_tree().change_scene("res://frames/ending3.tscn")
 		elif crouchOn == 1:
 			print("Spare")
 			sbuPos = 0
@@ -548,7 +552,7 @@ func _on_DIEBITCH4_timeout():
 
 func _on_DIEBITCH5_timeout():
 	print("DIEBITCH5")
-	if gopPos == 6:
+	if gopPos >= 6 or olgaPos == 6:
 		print("JUMPSCARE")
 		$MovGameOver.wait_time = 4
 		$CamParent/JumpScare.playing = true
@@ -557,6 +561,8 @@ func _on_DIEBITCH5_timeout():
 		$CamParent/JumpScare.scale = Vector2(3.493,3.493)
 		$JumpscareSound2.play()
 		$MovGameOver.start()
+		if sbuPos >= 9 and night >= 5:
+				get_tree().change_scene("res://frames/ending3.tscn")
 	else:
 		print("Spare")
 
@@ -567,7 +573,13 @@ func _on_PhoneCall1_finished():
 
 func _on_Audio_pressed():
 	$ResetAudio.start()
-	print("Playing audio on"+str(curCam))
+	if int(round(rand_range(1,100))) == 50:
+		$GopDistractor.set_stream(load("res://sounds/playaudio_easter.ogg"))
+	else:
+		$GopDistractor.set_stream(load("res://sounds/playaudio_"+str(int(round(rand_range(1,5))))+".ogg"))
+	#$GopDistractor.play()
+	$GopDistractor.playing = true
+	print("Playing audio on "+str(curCam))
 	AudioWhere = curCam
 
 
@@ -577,6 +589,9 @@ func _on_ResetAudio_timeout():
 		print("Masya moved to the camera where audio was played."+str(gopPos))
 		$DIEBITCH5.stop()
 		_on_DIEBITCH5_timeout()
+	if olgaAI > 0 and olgaPos == 6:
+		olgaPos = 7
+		_on_MoveClk_timeout()
 	print("Disabling audio")
 
 
@@ -598,3 +613,33 @@ func _on_DIEBITCH6_timeout():
 		$Ambient.play()
 		$InOffice.stop()
 		$AmbientDanger.stop()
+
+
+func _on_DIEBITCH7_timeout():
+	print("DIEBITCH6")
+	$DIEBITCH7.stop()
+	if curCam == swetlanPos:
+		print("JUMPSCARE")
+		$CamParent/JumpScare.animation = "Swetlan"
+		$CamParent/JumpScare.playing = true
+		$CamParent/JumpScare.show()
+		$CamParent/JumpScare.position = Vector2(514,298)
+		$CamParent/JumpScare.scale = Vector2(9.5,9.5)
+		$JumpscareSound.play()
+		$MovGameOver.start()
+
+
+func _on_DIEBITCH8_timeout():
+	print("DIEBITCH8")
+	$DIEBITCH8.stop()
+	if doorOn == 0:
+		print("JUMPSCARE")
+		$CamParent/JumpScare.playing = true
+		$CamParent/JumpScare.show()
+		$JumpscareSound.play()
+		$MovGameOver.start()
+	elif doorOn == 1:
+		print("Olga moving out")
+		olgaPos = randi()%5
+		$BG/BossInOffice2.hide()
+		print("Boss respawned at ",olgaPos)

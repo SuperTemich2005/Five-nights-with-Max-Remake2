@@ -1,0 +1,340 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://fonts/consola.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://textures/foes/Max2.png" type="Texture" id=2]
+[ext_resource path="res://textures/foes/Lentolna3.png" type="Texture" id=3]
+[ext_resource path="res://textures/foes/Milka2.png" type="Texture" id=4]
+[ext_resource path="res://textures/foes/Titanawanna3.png" type="Texture" id=5]
+[ext_resource path="res://textures/foes/sbu1.png" type="Texture" id=6]
+[ext_resource path="res://textures/foes/Masya1.png" type="Texture" id=7]
+[ext_resource path="res://textures/foes/Swetlanfedrna.png" type="Texture" id=8]
+[ext_resource path="res://frames/instructions.gd" type="Script" id=9]
+[ext_resource path="res://textures/foes/BossFull.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 1 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -14.0
+margin_top = -12.0
+margin_right = 1041.0
+margin_bottom = 611.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect"]
+margin_left = 26.0
+margin_top = 22.0
+margin_right = 426.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 1 )
+text = "Инструкции"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="briefIntro" type="Label" parent="ColorRect"]
+margin_left = 431.0
+margin_top = 22.0
+margin_right = 1081.0
+margin_bottom = 103.0
+custom_fonts/font = SubResource( 2 )
+text = "Инструкции по отражению атак врагов находятся в теле
+фонных звонках, но если вы не можете или не хотите их 
+слушать, то вот они же:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/briefIntro"]
+margin_left = -196.278
+margin_top = 75.7729
+margin_right = 70.7217
+margin_bottom = 115.773
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cats" type="Button" parent="ColorRect/briefIntro/HBoxContainer"]
+margin_right = 48.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+text = "Коты"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Teachers" type="Button" parent="ColorRect/briefIntro/HBoxContainer"]
+margin_left = 52.0
+margin_right = 127.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+text = "Учителя"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gov" type="Button" parent="ColorRect/briefIntro/HBoxContainer"]
+margin_left = 131.0
+margin_right = 197.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+text = "Прочие"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpoilerMode" type="Button" parent="ColorRect/briefIntro/HBoxContainer"]
+margin_left = 201.0
+margin_right = 339.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "!!!Спойлеры!!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bosses" type="Button" parent="ColorRect/briefIntro/HBoxContainer"]
+visible = false
+margin_left = 343.0
+margin_right = 400.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Боссы"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leave" type="Button" parent="ColorRect/briefIntro/HBoxContainer"]
+margin_left = 343.0
+margin_right = 400.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 3 )
+text = "Назад"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cats" type="Node2D" parent="ColorRect"]
+
+[node name="Max" type="Node2D" parent="ColorRect/Cats"]
+position = Vector2( 32, 120 )
+
+[node name="Sprite" type="Sprite" parent="ColorRect/Cats/Max"]
+position = Vector2( 78.8329, 81.1935 )
+scale = Vector2( 0.26527, 0.26527 )
+texture = ExtResource( 2 )
+
+[node name="Instruction" type="Label" parent="ColorRect/Cats/Max"]
+margin_left = 169.058
+margin_top = 26.1921
+margin_right = 235.058
+margin_bottom = 47.1921
+custom_fonts/font = SubResource( 4 )
+text = "Макс, ваш чёрный кот. В стене на вашу лоджию, со стороны комнаты родителей,
+есть щель, через которую он гарантированно проникает на вашу лоджию. Его
+можно увидеть в крайней левой части лоджии, а также он будет создавать
+шумы и гарантированно отключит ваши камеры. Чтобы спастись, наденьте маску
+Милки и не снимайте её, пока шумы не прекратятся и он не уйдет из лоджии."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Milka" type="Node2D" parent="ColorRect/Cats"]
+position = Vector2( 32, 288 )
+
+[node name="Sprite" type="Sprite" parent="ColorRect/Cats/Milka"]
+position = Vector2( 102.415, 76.8552 )
+scale = Vector2( 0.181842, 0.181842 )
+texture = ExtResource( 4 )
+
+[node name="Instruction" type="Label" parent="ColorRect/Cats/Milka"]
+margin_left = 169.058
+margin_top = 26.1921
+margin_right = 235.058
+margin_bottom = 47.1921
+custom_fonts/font = SubResource( 4 )
+text = "Меламори, ваша кошка. Весьма массивная, по этому щели, в которые влезает
+Макс, Милке недоступны. Попытается войти на лоджию через дверь, при этом
+лишнего шума подавать не будет. Закройте дверь, чтобы Меламори не напала на
+вас. Так как она может вполне легко вынести эту самую дверь, в механизм
+двери встроен магнит, питающийся от генератора на балконе. Дверь закрыть
+не получится, если генератор разряжен."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Teachers" type="Node2D" parent="ColorRect"]
+visible = false
+
+[node name="Layton" type="Node2D" parent="ColorRect/Teachers"]
+position = Vector2( 32, 120 )
+
+[node name="Sprite" type="Sprite" parent="ColorRect/Teachers/Layton"]
+position = Vector2( 80.2743, 78.946 )
+scale = Vector2( 1.47909, 1.47909 )
+texture = ExtResource( 3 )
+
+[node name="Instruction" type="Label" parent="ColorRect/Teachers/Layton"]
+margin_left = 169.058
+margin_top = 26.1921
+margin_right = 235.058
+margin_bottom = 47.1921
+custom_fonts/font = SubResource( 4 )
+text = "Лентольна, ваша учительница информатики. Гарантированно проникает в офис,
+так как магнитная дверь от людей не защищает. Интересно, но если надеть
+маску Милки, то она уйдет и не станет вас трогать. Почему это работает,
+неясно, возможно, она хочет создать ложное ощущение безопасности. Почему
+она на вас охотится, также остается загадкой без ответа... без ответа ли?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Swetlan" type="Node2D" parent="ColorRect/Teachers"]
+position = Vector2( 32, 288 )
+
+[node name="Sprite" type="Sprite" parent="ColorRect/Teachers/Swetlan"]
+position = Vector2( 94.7287, 84.5647 )
+scale = Vector2( 0.367371, 0.367371 )
+texture = ExtResource( 8 )
+
+[node name="Instruction" type="Label" parent="ColorRect/Teachers/Swetlan"]
+margin_left = 169.058
+margin_top = 26.1921
+margin_right = 235.058
+margin_bottom = 47.1921
+custom_fonts/font = SubResource( 4 )
+text = "Светланфёдрна, ваша учительница украинской литературы. Буквально прыгает
+между камерами. Если смотреть на неё очень долго, то она нападет на вас,
+минуя все камеры и преграды, как будто она может телепортироваться.
+Ничто не объясняет природу её поведения, передвижения, вопросов много,
+ответов нет. Ясно только одно - на неё смотреть нельзя, иначе - 2 в журнал."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titan" type="Node2D" parent="ColorRect/Teachers"]
+position = Vector2( 32, 456 )
+
+[node name="Sprite" type="Sprite" parent="ColorRect/Teachers/Titan"]
+position = Vector2( 80.0335, 81.1935 )
+scale = Vector2( 1.01746, 1.01746 )
+texture = ExtResource( 5 )
+
+[node name="Instruction" type="Label" parent="ColorRect/Teachers/Titan"]
+margin_left = 169.058
+margin_top = 26.1921
+margin_right = 235.058
+margin_bottom = 47.1921
+custom_fonts/font = SubResource( 4 )
+text = "Титанаванна, ваша учительница математики. Появляется за вашим окном и напа-
+дает спустя определенное время. Пригнитесь, чтобы она исчезла. Долго сидеть
+на кортах не придется. Как она оказывается за окном - есть версия, что ей
+помогает СБУ. Почему она на вас охотится - загадка от Жака Фреско. Почему
+уходит достаточно быстро и надолго, хоть и знает, где вы - вероятно, щадит."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gov" type="Node2D" parent="ColorRect"]
+visible = false
+
+[node name="SBU" type="Node2D" parent="ColorRect/Gov"]
+position = Vector2( 32, 120 )
+
+[node name="Sprite" type="Sprite" parent="ColorRect/Gov/SBU"]
+position = Vector2( 70.2945, 82.8852 )
+scale = Vector2( 0.233402, 0.233402 )
+texture = ExtResource( 6 )
+
+[node name="Instruction" type="Label" parent="ColorRect/Gov/SBU"]
+margin_left = 169.058
+margin_top = 26.1921
+margin_right = 235.058
+margin_bottom = 47.1921
+custom_fonts/font = SubResource( 4 )
+text = "Боевая единица специального назначения Службы Безопасности Украины, ака СБУ.
+Появляется за окном и ведет себя, как Татьяна Ивановна. Почему СБУ внезапно
+настолько заинтересовалось Тёмычем и кого они на самом деле ищат? Ну, на
+самом деле, возможно, можно и догадаться."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gop" type="Node2D" parent="ColorRect/Gov"]
+position = Vector2( 32, 288 )
+
+[node name="Sprite" type="Sprite" parent="ColorRect/Gov/Gop"]
+position = Vector2( 73.2912, 70.019 )
+scale = Vector2( 0.291401, 0.291401 )
+texture = ExtResource( 7 )
+
+[node name="Instruction" type="Label" parent="ColorRect/Gov/Gop"]
+margin_left = 169.058
+margin_top = 26.1921
+margin_right = 235.058
+margin_bottom = 47.1921
+custom_fonts/font = SubResource( 4 )
+text = "Гопник. Появляется в вашем доме, вероятно, взломав входную дверь. Ничего не 
+ворует и никого не стремится убрать, кроме Тьохи. Кто он и зачем он, а
+главное, какие проблемы он создает, с первого взгляда не определить: а он
+опаснее, чем кажется, а проблем от него больше, чем вы думаете.
+Видимо, голосовал за Виктора Януковича, от чего он идет туда, где слышны
+хотя бы его цитаты. Используйте кнопку \"Играть аудио\" на соседних камерах,
+чтобы Гопарь перешел туда в свой ход. В офисе не появляется, он нападет как
+только он сможет перейти из камеры 1 на лоджию."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bosses" type="Node2D" parent="ColorRect"]
+visible = false
+
+[node name="SBU" type="Node2D" parent="ColorRect/Bosses"]
+position = Vector2( 32, 120 )
+
+[node name="Sprite" type="Sprite" parent="ColorRect/Bosses/SBU"]
+position = Vector2( 82.6555, 87.9149 )
+scale = Vector2( 0.340182, 0.340182 )
+texture = ExtResource( 10 )
+
+[node name="Instruction" type="Label" parent="ColorRect/Bosses/SBU"]
+margin_left = 169.058
+margin_top = 26.1921
+margin_right = 235.058
+margin_bottom = 47.1921
+custom_fonts/font = SubResource( 4 )
+text = "Ольгасильна, директор вашей школы. Отвечает на множество вопросов во время
+телефонного звонка 8 ночи. Если вы нигде её не видите, играйте аудио где
+угодно. Если видите её за окном, пригнитесь. Если она в офисе, наденьте
+маску. Если она за дверью, закройте дверь. "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ColorRect/briefIntro/HBoxContainer/Cats" to="." method="_on_Cats_pressed"]
+[connection signal="pressed" from="ColorRect/briefIntro/HBoxContainer/Teachers" to="." method="_on_Teachers_pressed"]
+[connection signal="pressed" from="ColorRect/briefIntro/HBoxContainer/Gov" to="." method="_on_Gov_pressed"]
+[connection signal="pressed" from="ColorRect/briefIntro/HBoxContainer/SpoilerMode" to="." method="_on_SpoilerMode_pressed"]
+[connection signal="pressed" from="ColorRect/briefIntro/HBoxContainer/Bosses" to="." method="_on_Bosses_pressed"]
+[connection signal="pressed" from="ColorRect/briefIntro/HBoxContainer/Leave" to="." method="_on_Leave_pressed"]

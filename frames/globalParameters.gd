@@ -10,3 +10,4 @@ var gopAI
 var sbuAI
 var olgaAI
 var night
+var ending

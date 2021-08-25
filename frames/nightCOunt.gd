@@ -7,7 +7,10 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var params = get_node("/root/GlobalParameters")
-	$Label.text = "Ночь "+str(params.night)
+	if params.night != 8:
+		$Label.text = "Ночь "+str(params.night)
+	else:
+		$Label.text = "Смертельная схватка"
 
 
 func _on_NextFrame_timeout():

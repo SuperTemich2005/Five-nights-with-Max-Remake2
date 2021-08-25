@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://fonts/consola.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://textures/Max.png" type="Texture" id=2]
 [ext_resource path="res://frames/test.gd" type="Script" id=3]
 [ext_resource path="res://sounds/Главное меню ~ Пять ночей с Максом REMAKE (2021).ogg" type="AudioStream" id=4]
+[ext_resource path="res://textures/star.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -22,19 +23,28 @@ font_data = ExtResource( 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
+size = 25
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 25
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 1 )
+
+[sub_resource type="CanvasItemMaterial" id=10]
+blend_mode = 3
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Background" type="ColorRect" parent="."]
-margin_top = -1.83163
+margin_top = -2.0
 margin_right = 1024.0
-margin_bottom = 598.168
+margin_bottom = 653.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true,
@@ -68,9 +78,9 @@ __meta__ = {
 
 [node name="New Game" type="Button" parent="."]
 margin_left = 17.0
-margin_top = 380.347
+margin_top = 283.347
 margin_right = 355.0
-margin_bottom = 422.347
+margin_bottom = 325.347
 custom_fonts/font = SubResource( 3 )
 text = "Новая Игра"
 __meta__ = {
@@ -79,9 +89,9 @@ __meta__ = {
 
 [node name="Load Game" type="Button" parent="."]
 margin_left = 17.0
-margin_top = 443.24
+margin_top = 346.24
 margin_right = 355.0
-margin_bottom = 485.24
+margin_bottom = 388.24
 custom_fonts/font = SubResource( 4 )
 text = "Загрузить игру"
 __meta__ = {
@@ -90,21 +100,21 @@ __meta__ = {
 
 [node name="Extras" type="Button" parent="."]
 margin_left = 17.0
-margin_top = 540.0
-margin_right = 183.0
-margin_bottom = 582.0
-custom_fonts/font = SubResource( 5 )
-text = "Своя ночь"
+margin_top = 410.24
+margin_right = 355.0
+margin_bottom = 452.24
+custom_fonts/font = SubResource( 4 )
+text = "Экстра"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Change Language" type="Button" parent="."]
-margin_left = 34.0827
-margin_top = 637.219
-margin_right = 200.083
-margin_bottom = 679.219
-custom_fonts/font = SubResource( 6 )
+margin_left = 22.0827
+margin_top = 656.219
+margin_right = 188.083
+margin_bottom = 698.219
+custom_fonts/font = SubResource( 5 )
 text = "RU/ENG"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -123,27 +133,139 @@ volume_db = -16.935
 autoplay = true
 
 [node name="Ver" type="Label" parent="."]
-margin_left = 738.141
-margin_top = 7.937
-margin_right = 1018.14
-margin_bottom = 62.937
-custom_fonts/font = SubResource( 7 )
-text = "Билд 5 Pre-release 2"
+margin_left = 378.838
+margin_top = 562.0
+margin_right = 658.838
+margin_bottom = 617.0
+custom_fonts/font = SubResource( 6 )
+text = "v1.0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Dev" type="Label" parent="."]
-margin_left = 200.0
-margin_top = 555.0
-margin_right = 290.0
-margin_bottom = 592.0
-custom_fonts/font = SubResource( 7 )
+margin_left = 17.0
+margin_top = 562.0
+margin_right = 353.0
+margin_bottom = 617.0
+custom_fonts/font = SubResource( 6 )
 text = "AZIE Games 2021 © ST2005
 "
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="Credits" type="Button" parent="."]
+visible = false
+margin_left = 669.0
+margin_top = 283.347
+margin_right = 1005.0
+margin_bottom = 325.347
+custom_fonts/font = SubResource( 7 )
+text = "Кредиты"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Button" parent="."]
+visible = false
+margin_left = 669.0
+margin_top = 346.24
+margin_right = 1005.0
+margin_bottom = 388.24
+custom_fonts/font = SubResource( 8 )
+text = "Инструкции (Спойлеры!)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Custom Night" type="Button" parent="."]
+visible = false
+margin_left = 669.0
+margin_top = 410.0
+margin_right = 1005.0
+margin_bottom = 452.0
+custom_fonts/font = SubResource( 9 )
+text = "Своя ночь"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CompNight5" type="Sprite" parent="."]
+visible = false
+position = Vector2( 201.5, 46.5 )
+scale = Vector2( 0.465, 0.465 )
+texture = ExtResource( 5 )
+
+[node name="StarColor" type="ColorRect" parent="CompNight5"]
+material = SubResource( 10 )
+margin_left = 436.129
+margin_top = -80.0
+margin_right = 603.129
+margin_bottom = 73.0
+color = Color( 0, 0.976471, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CompNight6" type="Sprite" parent="."]
+visible = false
+position = Vector2( 281.5, 46.5 )
+scale = Vector2( 0.465, 0.465 )
+texture = ExtResource( 5 )
+
+[node name="StarColor" type="ColorRect" parent="CompNight6"]
+material = SubResource( 10 )
+margin_left = -82.1506
+margin_top = -80.0
+margin_right = 84.8494
+margin_bottom = 73.0
+color = Color( 0.968627, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CompNight8" type="Sprite" parent="."]
+visible = false
+position = Vector2( 361.5, 46.5 )
+scale = Vector2( 0.465, 0.465 )
+texture = ExtResource( 5 )
+
+[node name="StarColor" type="ColorRect" parent="CompNight8"]
+material = SubResource( 10 )
+margin_left = -80.0
+margin_top = -80.0
+margin_right = 87.0
+margin_bottom = 73.0
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CompNightAll20" type="Sprite" parent="."]
+visible = false
+position = Vector2( 441.5, 46.5 )
+scale = Vector2( 0.465, 0.465 )
+texture = ExtResource( 5 )
+
+[node name="StarColor" type="ColorRect" parent="CompNightAll20"]
+material = SubResource( 10 )
+margin_left = -80.0
+margin_top = -80.0
+margin_right = 87.0
+margin_bottom = 73.0
+color = Color( 0, 0.976471, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="flicker" type="Timer" parent="."]
+autostart = true
 [connection signal="pressed" from="New Game" to="." method="_on_New_Game_pressed"]
 [connection signal="pressed" from="Load Game" to="." method="_on_Load_Game_pressed"]
 [connection signal="pressed" from="Extras" to="." method="_on_Extras_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Instructions" to="." method="_on_Instructions_pressed"]
+[connection signal="pressed" from="Custom Night" to="." method="_on_CustomNight_pressed"]
+[connection signal="timeout" from="flicker" to="." method="_on_flicker_timeout"]

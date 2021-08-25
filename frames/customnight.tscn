@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://sounds/Главное меню ~ Пять ночей с Максом REMAKE (2021).ogg" type="AudioStream" id=1]
 [ext_resource path="res://frames/customnight.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://textures/foes/Max2.png" type="Texture" id=7]
 [ext_resource path="res://textures/foes/Masya1.png" type="Texture" id=8]
 [ext_resource path="res://textures/foes/Lentolna2.png" type="Texture" id=9]
+[ext_resource path="res://textures/foes/szOCTVl5_400x400.jpg" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -34,6 +35,14 @@ font_data = ExtResource( 3 )
 size = 100
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=7]
+size = 33
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 70
+font_data = ExtResource( 3 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -42,7 +51,7 @@ stream = ExtResource( 1 )
 volume_db = -16.0
 autoplay = true
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG_customnight" type="ColorRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
 color = Color( 0, 0, 0, 1 )
@@ -50,7 +59,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Title" type="Label" parent="BG"]
+[node name="Title" type="Label" parent="BG_customnight"]
 margin_left = 14.0
 margin_top = 18.0
 margin_right = 374.0
@@ -61,7 +70,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Button" parent="BG"]
+[node name="Start" type="Button" parent="BG_customnight"]
 margin_left = 614.0
 margin_top = 498.0
 margin_right = 979.0
@@ -72,7 +81,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" type="Button" parent="BG"]
+[node name="Back" type="Button" parent="BG_customnight"]
 margin_left = 42.6365
 margin_top = 498.0
 margin_right = 407.636
@@ -83,16 +92,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Max2" type="Node2D" parent="BG"]
+[node name="Max2" type="Node2D" parent="BG_customnight"]
 position = Vector2( 26.7441, 44.717 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="Max" type="Sprite" parent="BG/Max2"]
+[node name="Max" type="Sprite" parent="BG_customnight/Max2"]
 position = Vector2( 165.563, 231.563 )
 scale = Vector2( 0.345773, 0.345773 )
 texture = ExtResource( 7 )
 
-[node name="NameLabel" type="Label" parent="BG/Max2/Max"]
+[node name="NameLabel" type="Label" parent="BG_customnight/Max2/Max"]
 margin_left = -181.222
 margin_top = -428.472
 margin_right = 134.778
@@ -104,11 +113,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Difficulty" type="Label" parent="BG/Max2/Max"]
+[node name="Difficulty" type="Label" parent="BG_customnight/Max2/Max"]
 margin_left = -196.202
-margin_top = 380.836
+margin_top = 368.441
 margin_right = 119.798
-margin_bottom = 525.836
+margin_bottom = 513.441
 custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
@@ -116,7 +125,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Harder" type="Button" parent="BG/Max2/Max"]
+[node name="Harder" type="Button" parent="BG_customnight/Max2/Max"]
 margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
@@ -127,7 +136,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Easier" type="Button" parent="BG/Max2/Max"]
+[node name="Easier" type="Button" parent="BG_customnight/Max2/Max"]
 margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
@@ -138,20 +147,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Milka2" type="Node2D" parent="BG"]
+[node name="Milka2" type="Node2D" parent="BG_customnight"]
 position = Vector2( 26.7441, 44.717 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="Milka" type="Sprite" parent="BG/Milka2"]
+[node name="Milka" type="Sprite" parent="BG_customnight/Milka2"]
 position = Vector2( 415.607, 253.787 )
 scale = Vector2( 0.247506, 0.247506 )
 texture = ExtResource( 5 )
 
-[node name="Node2D" type="Node2D" parent="BG/Milka2/Milka"]
+[node name="Node2D" type="Node2D" parent="BG_customnight/Milka2/Milka"]
 position = Vector2( -113.307, -89.7902 )
 scale = Vector2( 1.39703, 1.39703 )
 
-[node name="NameLabel" type="Label" parent="BG/Milka2/Milka/Node2D"]
+[node name="NameLabel" type="Label" parent="BG_customnight/Milka2/Milka/Node2D"]
 margin_left = -227.13
 margin_top = -428.472
 margin_right = 167.87
@@ -164,11 +173,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Difficulty" type="Label" parent="BG/Milka2/Milka/Node2D"]
+[node name="Difficulty" type="Label" parent="BG_customnight/Milka2/Milka/Node2D"]
 margin_left = -190.109
-margin_top = 380.836
+margin_top = 368.441
 margin_right = 125.891
-margin_bottom = 525.836
+margin_bottom = 513.441
 custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
@@ -176,7 +185,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Harder" type="Button" parent="BG/Milka2/Milka/Node2D"]
+[node name="Harder" type="Button" parent="BG_customnight/Milka2/Milka/Node2D"]
 margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
@@ -187,7 +196,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Easier" type="Button" parent="BG/Milka2/Milka/Node2D"]
+[node name="Easier" type="Button" parent="BG_customnight/Milka2/Milka/Node2D"]
 margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
@@ -198,20 +207,80 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Wannadwatitana2" type="Node2D" parent="BG"]
+[node name="Swetlan2" type="Node2D" parent="BG_customnight"]
+position = Vector2( 247.744, 284.717 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Swetlan" type="Sprite" parent="BG_customnight/Swetlan2"]
+position = Vector2( 372.86, 231.563 )
+scale = Vector2( 0.780099, 0.780099 )
+texture = ExtResource( 10 )
+
+[node name="Node2D" type="Node2D" parent="BG_customnight/Swetlan2/Swetlan"]
+position = Vector2( 13.9579, -6.10352e-05 )
+scale = Vector2( 0.443243, 0.443243 )
+
+[node name="NameLabel" type="Label" parent="BG_customnight/Swetlan2/Swetlan/Node2D"]
+margin_left = -480.816
+margin_top = -422.957
+margin_right = 407.184
+margin_bottom = -277.957
+rect_pivot_offset = Vector2( 3578.65, 2473.82 )
+custom_fonts/font = SubResource( 3 )
+text = "С. Фёдоровна"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Difficulty" type="Label" parent="BG_customnight/Swetlan2/Swetlan/Node2D"]
+margin_left = -190.109
+margin_top = 368.441
+margin_right = 125.891
+margin_bottom = 513.441
+custom_fonts/font = SubResource( 3 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Harder" type="Button" parent="BG_customnight/Swetlan2/Swetlan/Node2D"]
+margin_left = 51.5306
+margin_top = 337.526
+margin_right = 223.531
+margin_bottom = 522.526
+custom_fonts/font = SubResource( 4 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Easier" type="Button" parent="BG_customnight/Swetlan2/Swetlan/Node2D"]
+margin_left = -292.0
+margin_top = 337.526
+margin_right = -120.0
+margin_bottom = 522.526
+custom_fonts/font = SubResource( 4 )
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wannadwatitana2" type="Node2D" parent="BG_customnight"]
 position = Vector2( 26.7441, 44.717 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="Wannadwatitana" type="Sprite" parent="BG/Wannadwatitana2"]
+[node name="Wannadwatitana" type="Sprite" parent="BG_customnight/Wannadwatitana2"]
 position = Vector2( 600.685, 240.294 )
 scale = Vector2( 1.36262, 1.36262 )
 texture = ExtResource( 4 )
 
-[node name="Node2D" type="Node2D" parent="BG/Wannadwatitana2/Wannadwatitana"]
+[node name="Node2D" type="Node2D" parent="BG_customnight/Wannadwatitana2/Wannadwatitana"]
 position = Vector2( 3.5798, -6.40721 )
 scale = Vector2( 0.253756, 0.253756 )
 
-[node name="NameLabel" type="Label" parent="BG/Wannadwatitana2/Wannadwatitana/Node2D"]
+[node name="NameLabel" type="Label" parent="BG_customnight/Wannadwatitana2/Wannadwatitana/Node2D"]
 margin_left = -419.947
 margin_top = -428.472
 margin_right = 449.053
@@ -223,11 +292,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Difficulty" type="Label" parent="BG/Wannadwatitana2/Wannadwatitana/Node2D"]
+[node name="Difficulty" type="Label" parent="BG_customnight/Wannadwatitana2/Wannadwatitana/Node2D"]
 margin_left = -189.716
-margin_top = 380.836
+margin_top = 368.442
 margin_right = 126.284
-margin_bottom = 525.836
+margin_bottom = 513.442
 custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
@@ -235,7 +304,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Harder" type="Button" parent="BG/Wannadwatitana2/Wannadwatitana/Node2D"]
+[node name="Harder" type="Button" parent="BG_customnight/Wannadwatitana2/Wannadwatitana/Node2D"]
 margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
@@ -246,7 +315,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Easier" type="Button" parent="BG/Wannadwatitana2/Wannadwatitana/Node2D"]
+[node name="Easier" type="Button" parent="BG_customnight/Wannadwatitana2/Wannadwatitana/Node2D"]
 margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
@@ -257,20 +326,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SBU2" type="Node2D" parent="BG"]
+[node name="SBU2" type="Node2D" parent="BG_customnight"]
 position = Vector2( 26.7441, 44.717 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="SBU" type="Sprite" parent="BG/SBU2"]
+[node name="SBU" type="Sprite" parent="BG_customnight/SBU2"]
 position = Vector2( 818.412, 241.162 )
 scale = Vector2( 0.386097, 0.386097 )
 texture = ExtResource( 6 )
 
-[node name="Node2D" type="Node2D" parent="BG/SBU2/SBU"]
+[node name="Node2D" type="Node2D" parent="BG_customnight/SBU2/SBU"]
 position = Vector2( -4.78955, -24.8605 )
 scale = Vector2( 0.89556, 0.89556 )
 
-[node name="NameLabel" type="Label" parent="BG/SBU2/SBU/Node2D"]
+[node name="NameLabel" type="Label" parent="BG_customnight/SBU2/SBU/Node2D"]
 margin_left = -419.947
 margin_top = -428.472
 margin_right = 449.053
@@ -282,11 +351,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Difficulty" type="Label" parent="BG/SBU2/SBU/Node2D"]
+[node name="Difficulty" type="Label" parent="BG_customnight/SBU2/SBU/Node2D"]
 margin_left = -189.716
-margin_top = 380.836
+margin_top = 368.441
 margin_right = 126.284
-margin_bottom = 525.836
+margin_bottom = 513.441
 custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
@@ -294,7 +363,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Harder" type="Button" parent="BG/SBU2/SBU/Node2D"]
+[node name="Harder" type="Button" parent="BG_customnight/SBU2/SBU/Node2D"]
 margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
@@ -305,7 +374,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Easier" type="Button" parent="BG/SBU2/SBU/Node2D"]
+[node name="Easier" type="Button" parent="BG_customnight/SBU2/SBU/Node2D"]
 margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
@@ -316,20 +385,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Masya2" type="Node2D" parent="BG"]
+[node name="Masya2" type="Node2D" parent="BG_customnight"]
 position = Vector2( 175.744, 44.717 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="Masya" type="Sprite" parent="BG/Masya2"]
+[node name="Masya" type="Sprite" parent="BG_customnight/Masya2"]
 position = Vector2( 818.412, 241.162 )
 scale = Vector2( 0.386097, 0.386097 )
 texture = ExtResource( 8 )
 
-[node name="Node2D" type="Node2D" parent="BG/Masya2/Masya"]
+[node name="Node2D" type="Node2D" parent="BG_customnight/Masya2/Masya"]
 position = Vector2( -4.78955, -24.8605 )
 scale = Vector2( 0.89556, 0.89556 )
 
-[node name="NameLabel" type="Label" parent="BG/Masya2/Masya/Node2D"]
+[node name="NameLabel" type="Label" parent="BG_customnight/Masya2/Masya/Node2D"]
 margin_left = -419.947
 margin_top = -428.472
 margin_right = 449.053
@@ -341,11 +410,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Difficulty" type="Label" parent="BG/Masya2/Masya/Node2D"]
+[node name="Difficulty" type="Label" parent="BG_customnight/Masya2/Masya/Node2D"]
 margin_left = -189.716
-margin_top = 380.836
+margin_top = 368.441
 margin_right = 126.284
-margin_bottom = 525.836
+margin_bottom = 513.441
 custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
@@ -353,7 +422,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Harder" type="Button" parent="BG/Masya2/Masya/Node2D"]
+[node name="Harder" type="Button" parent="BG_customnight/Masya2/Masya/Node2D"]
 margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
@@ -364,7 +433,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Easier" type="Button" parent="BG/Masya2/Masya/Node2D"]
+[node name="Easier" type="Button" parent="BG_customnight/Masya2/Masya/Node2D"]
 margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
@@ -375,20 +444,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Lentoln2" type="Node2D" parent="BG"]
+[node name="Lentoln2" type="Node2D" parent="BG_customnight"]
 position = Vector2( 330.744, 44.717 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="Lentoln" type="Sprite" parent="BG/Lentoln2"]
+[node name="Lentoln" type="Sprite" parent="BG_customnight/Lentoln2"]
 position = Vector2( 808.262, 235.441 )
 scale = Vector2( 2.07576, 2.07576 )
 texture = ExtResource( 9 )
 
-[node name="Node2D" type="Node2D" parent="BG/Lentoln2/Lentoln"]
+[node name="Node2D" type="Node2D" parent="BG_customnight/Lentoln2/Lentoln"]
 position = Vector2( 3.99908, -1.86813 )
 scale = Vector2( 0.166576, 0.166576 )
 
-[node name="NameLabel" type="Label" parent="BG/Lentoln2/Lentoln/Node2D"]
+[node name="NameLabel" type="Label" parent="BG_customnight/Lentoln2/Lentoln/Node2D"]
 margin_left = -406.16
 margin_top = -420.199
 margin_right = 462.84
@@ -400,11 +469,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Difficulty" type="Label" parent="BG/Lentoln2/Lentoln/Node2D"]
+[node name="Difficulty" type="Label" parent="BG_customnight/Lentoln2/Lentoln/Node2D"]
 margin_left = -189.716
-margin_top = 380.836
+margin_top = 368.441
 margin_right = 126.284
-margin_bottom = 525.836
+margin_bottom = 513.441
 custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
@@ -412,7 +481,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Harder" type="Button" parent="BG/Lentoln2/Lentoln/Node2D"]
+[node name="Harder" type="Button" parent="BG_customnight/Lentoln2/Lentoln/Node2D"]
 margin_left = 51.5306
 margin_top = 337.526
 margin_right = 223.531
@@ -423,7 +492,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Easier" type="Button" parent="BG/Lentoln2/Lentoln/Node2D"]
+[node name="Easier" type="Button" parent="BG_customnight/Lentoln2/Lentoln/Node2D"]
 margin_left = -292.0
 margin_top = 337.526
 margin_right = -120.0
@@ -433,17 +502,55 @@ text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="BG/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="BG/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="BG/Max2/Max/Harder" to="." method="_on_HarderMax_pressed"]
-[connection signal="pressed" from="BG/Max2/Max/Easier" to="." method="_on_EasierMax_pressed"]
-[connection signal="pressed" from="BG/Milka2/Milka/Node2D/Harder" to="." method="_on_HarderMil_pressed"]
-[connection signal="pressed" from="BG/Milka2/Milka/Node2D/Easier" to="." method="_on_EasierMil_pressed"]
-[connection signal="pressed" from="BG/Wannadwatitana2/Wannadwatitana/Node2D/Harder" to="." method="_on_HarderTit_pressed"]
-[connection signal="pressed" from="BG/Wannadwatitana2/Wannadwatitana/Node2D/Easier" to="." method="_on_EasierTit_pressed"]
-[connection signal="pressed" from="BG/SBU2/SBU/Node2D/Harder" to="." method="_on_HarderSbu_pressed"]
-[connection signal="pressed" from="BG/SBU2/SBU/Node2D/Easier" to="." method="_on_EasierSbu_pressed"]
-[connection signal="pressed" from="BG/Masya2/Masya/Node2D/Harder" to="." method="_on_HarderMasya_pressed"]
-[connection signal="pressed" from="BG/Masya2/Masya/Node2D/Easier" to="." method="_on_EasierMasya_pressed"]
-[connection signal="pressed" from="BG/Lentoln2/Lentoln/Node2D/Harder" to="." method="_on_HarderLen_pressed"]
-[connection signal="pressed" from="BG/Lentoln2/Lentoln/Node2D/Easier" to="." method="_on_EasierLen_pressed"]
+
+[node name="Label" type="Label" parent="BG_customnight"]
+margin_left = 100.335
+margin_top = 392.0
+margin_right = 351.335
+margin_bottom = 487.0
+custom_fonts/font = SubResource( 7 )
+text = "< Испытания >"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PrevMode" type="Button" parent="BG_customnight/Label"]
+margin_left = -56.0
+margin_right = -6.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 8 )
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextMode" type="Button" parent="BG_customnight/Label"]
+margin_left = 258.0
+margin_right = 308.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 8 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BG_customnight/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="BG_customnight/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="BG_customnight/Max2/Max/Harder" to="." method="_on_HarderMax_pressed"]
+[connection signal="pressed" from="BG_customnight/Max2/Max/Easier" to="." method="_on_EasierMax_pressed"]
+[connection signal="pressed" from="BG_customnight/Milka2/Milka/Node2D/Harder" to="." method="_on_HarderMil_pressed"]
+[connection signal="pressed" from="BG_customnight/Milka2/Milka/Node2D/Easier" to="." method="_on_EasierMil_pressed"]
+[connection signal="pressed" from="BG_customnight/Swetlan2/Swetlan/Node2D/Harder" to="." method="_on_HarderSwe_pressed"]
+[connection signal="pressed" from="BG_customnight/Swetlan2/Swetlan/Node2D/Easier" to="." method="_on_EasierSwe_pressed"]
+[connection signal="pressed" from="BG_customnight/Wannadwatitana2/Wannadwatitana/Node2D/Harder" to="." method="_on_HarderTit_pressed"]
+[connection signal="pressed" from="BG_customnight/Wannadwatitana2/Wannadwatitana/Node2D/Easier" to="." method="_on_EasierTit_pressed"]
+[connection signal="pressed" from="BG_customnight/SBU2/SBU/Node2D/Harder" to="." method="_on_HarderSbu_pressed"]
+[connection signal="pressed" from="BG_customnight/SBU2/SBU/Node2D/Easier" to="." method="_on_EasierSbu_pressed"]
+[connection signal="pressed" from="BG_customnight/Masya2/Masya/Node2D/Harder" to="." method="_on_HarderMasya_pressed"]
+[connection signal="pressed" from="BG_customnight/Masya2/Masya/Node2D/Easier" to="." method="_on_EasierMasya_pressed"]
+[connection signal="pressed" from="BG_customnight/Lentoln2/Lentoln/Node2D/Harder" to="." method="_on_HarderLen_pressed"]
+[connection signal="pressed" from="BG_customnight/Lentoln2/Lentoln/Node2D/Easier" to="." method="_on_EasierLen_pressed"]
+[connection signal="pressed" from="BG_customnight/Label/PrevMode" to="." method="_on_PrevMode_pressed"]
+[connection signal="pressed" from="BG_customnight/Label/NextMode" to="." method="_on_NextMode_pressed"]
